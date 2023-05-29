@@ -46,7 +46,12 @@
       </tfoot>
     </table> -->
 
+    
+
     <div class="col-lg-10 position-absolute top-50 start-50 translate-middle">
+
+      
+
       <div class="card">
           <div class="card-body">
               <h4 class="header-title">Contoh Data User</h4>
@@ -65,18 +70,69 @@
                           </tr>
                       </thead>
                       <tbody id="tdata">
-                          <tr>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                          </tr>
                       </tbody>
+                      <tfoot>
+                        <div class="d-flex gap-3">
+                          <button type="button" class="btn btn-primary">Update</button>
+                          <button type="button" class="btn btn-success">Tambah</button>
+                          <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                        
+                      </tfoot>
                   </table>
               </div>
           </div>
       </div>
+      <div class="wrapper mb-3">
+    
+        <div class="content">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="description">Tambah Datamu Disini</h3>
+            </div>
+            <div class="col-md-12 ">
+              <form class="" action="">
+                <div id="barisan" class="d-flex row gap-2">
+                  <div class="d-flex gap-2 inputan">
+                  <input class="input" placeholder="Username" name="Nama[]" required="" type="text">
+                   <input class="input" placeholder="Password" name="Kota[]" type="text" required=""><input class="input" placeholder="Url" name="Agama[]" type="text" required=""><button id="tambahin" class="btn btn-success">Add More</button>
+                </div>
+                </div>
+                
+                <input id="pencet" class="input mt-2" placeholder="Nama" name="pencet" type="submit">
+              </form>
+              </div>
+          </div>
+        </div>
+        
+      </div>
   </div>
+    <script>
+      var isianDiv = `<div class="d-flex gap-2 inputan">
+            		<input class="input" placeholder="Username" name="Nama[]" required type="text">
+          <input class="input" placeholder="Password" name="Kota[]" type="text" required><input class="input" placeholder="Url" name="Url[]" type="text" required><button id="kurangin" class="btn btn-danger">Remove</button><button onclick id="tambahin2" class="btn btn-success">Add More</button>
+            	</div>`
+      
+    $(document).ready(function() {
+      $("#tambahin").click(function(add){
+      	add.preventDefault()
+      	$("#barisan").append(isianDiv);
+      })
+
+      $(document).on('click', '#kurangin', function(del) {
+      	del.preventDefault();
+      	let row_item = $(this).parent();
+      	$(row_item).remove();
+      });
+      $(document).on('click', '#tambahin2', function(add) {
+      	add.preventDefault();
+      	let row_item = $(this).parent();
+        
+      	$("#barisan").append(isianDiv);
+      });
+    })
+  </script>
+
     <script>
       $(document).ready(function () {
         // $("#example").DataTable();
