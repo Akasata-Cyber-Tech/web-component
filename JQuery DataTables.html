@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    
+    <script src="data2.js"></script>
+  </head>
+  <body>
+    <table id="example" class="display" style="width: 100%">
+      <thead>
+        <tr>
+          <th>CreatedBy</th>
+          <th>CreateDate</th>
+          <th>Id</th>
+          <th>Password</th>
+          <th>Url</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody id="tdata">
+        
+        
+      </tbody>
+      <tfoot id="tfot">
+        <tr>
+          <th>Count</th>
+          <th>Code</th>
+          <th>Message</th>
+          <th>Description</th>
+          
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      $(document).ready(function () {
+        // $("#example").DataTable();
+
+        function displayData(data) {
+            // JSON PARSE
+          const parsed = JSON.parse(JSON.stringify(dataJSON));
+
+          const parsedList = JSON.parse(JSON.stringify(dataJSON.List));
+        
+        //   cek tipe data
+        //   console.log(typeof data);
+
+        // Looping Object
+        //   Object.keys(data).forEach(function (key) {
+        //     console.log(data[key]);
+        //     console.log(data.Count)
+            
+        //   });
+
+          $("#tfot").append("<tr class=odd>" + "<td>" + parsed.Count + "</td>"+ "<td>" + parsed.Code + "</td>"+ "<td>" + parsed.Message + "</td>"+ "<td>" + parsed.Description + "</td>" )
+
+          parsedList.forEach(function (dt) {
+            $("#tdata").append("<tr class=>" + "<td>" + dt.CreateBy + "</td"+"<tr>" + "<td>" + dt.CreateDate + "</td"+"<tr>" + "<td>" + dt.Id + "</td"+"<tr>" + "<td>" + dt.Password + "</td"+"<tr>" + "<td>" + dt.Url + "</td"+"<tr>" + "<td>" + dt.Username + "</td"+"<tr>" );
+          });
+
+        //   cek variable
+        //   console.log(parsedList);
+        }
+
+        displayData(dataJSON);
+      });
+    </script>
+  </body>
+</html>
