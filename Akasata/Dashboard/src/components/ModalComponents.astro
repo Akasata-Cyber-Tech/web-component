@@ -1,0 +1,74 @@
+---
+interface ModalField {
+  label: string;       // The label for the form field
+  inputType: 'text' | 'number' | 'email' | 'password' | 'date' | 'url' | 'tel' | 'search' | 'color'; // Restricted to HTML input types
+  placeholder: string; // The placeholder for the input field
+  required?: boolean;  // Optional: Whether the field is required
+}
+
+// Props: These allow you to customize the modal’s content
+const { modalId = "newOrderModal", modalTitle = "Add Endpoint", ModalForms = [] } = Astro.props;
+
+---
+
+<div
+  class="modal fade"
+  id={modalId}
+  tabindex="-1"
+  aria-labelledby={`${modalId}Label`}
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="" id={`${modalId}Label`}>{modalTitle}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form
+          autocomplete="off"
+          class="needs-validation createorder-form"
+          id="createorder-form"
+          novalidate
+        >
+          <div class="row">
+            {ModalForms.map((field: ModalField) =>(
+            <div class="col-lg-12">
+              <input type="hidden" class="form-control" id="orderid-input" />
+              <div class="mb-3">
+                <label for={field.label} class="form-label">{field.label}</label>
+                <input
+                  type={field.inputType}
+                  id={field.label}
+                  class="form-control"
+                  placeholder={field.placeholder}
+                  required={field.required ? true : false}
+                />
+                {field.required && (
+                  <div class="invalid-feedback">Please enter a {field.label}</div>
+                )}
+              </div>
+            </div>
+            ))}
+            <div class="col-lg-12">
+              <div class="text-end">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  data-bs-dismiss="modal">Cancel</button>
+                <button
+                  type="submit"
+                  id="addNewOrder-btn"
+                  class="btn btn-success">Create</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
