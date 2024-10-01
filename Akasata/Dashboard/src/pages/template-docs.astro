@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/LayoutEndpoint.astro";
+import ModalButton from "../components/ModalButton.astro";
+import ModalComponents from "../components/ModalComponents.astro";
+
+const ModalForms = [
+  { label: "Endpoint NAMA", inputType: "text", placeholder: "Enter Endpoint Hostname", required: true },
+  { label: "Endpoint IP", inputType: "text", placeholder: "Enter Endpoint IP", required: true },
+  { label: "OS Type", inputType: "text", placeholder: "Enter OS Type", required: false },
+  { label: "OS Name", inputType: "text", placeholder: "Enter OS Name", required: true },
+  { label: "Regional", inputType: "text", placeholder: "Enter Regional", required: false },
+  { label: "Protection Manager", inputType: "select", placeholder: "", required: true }
+];
+
+
+---
+
+<Layout title="Asset Management | Endpoint">
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div id="">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row mb-2">
+                            <div class="col-sm-4">
+                              <h2 class="" id="">
+                                Here For Endpoint | Server Management
+                              </h2>
+                            </div>
+                            <ModalButton textColor="black" buttonColor="aqua" buttonText="Add New IP" modalTarget="#newIPModal" />
+                            <ModalComponents modalId="newIPModal" modalTitle="Add New IP" ModalForms={ModalForms}/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          Endpoint User | Server has Added
+                        </h4>
+                        <form class="app-search d-none d-lg-block">
+                          <div class="position-relative">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Search..."
+                            />
+                            <span class="bx bx-search-alt"></span>
+                          </div>
+                        </form>
+
+                        <div class="table-responsive">
+                          <table class="table table-striped-columns mb-0">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Endpoint Hostname</th>
+                                <th>Endpoint IP</th>
+                                <th>Regional | Endpoint Grup</th>
+                                <th>OS Type</th>
+                                <th>OS Name</th>
+                                <th>Protection manager</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Laptop Kazuha</td>
+                                <td>20.36.98.32</td>
+                                <td>Prancis</td>
+                                <td>Windows</td>
+                                <td>Windows 10</td>
+                                <td>Endpoint Protection</td>
+                                <td>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                    data-bs-toggle="modal"
+                                    data-bs-target=".transaction-detailModal"
+                                  >
+                                    View Details
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Laptop Raiden</td>
+                                <td>11.96.35.69</td>
+                                <td>Raiden</td>
+                                <td>Windows</td>
+                                <td>Windows 10</td>
+                                <td>Endpoint Protection</td>
+                                <td>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                    data-bs-toggle="modal"
+                                    data-bs-target=".transaction-detailModal"
+                                  >
+                                    View Details
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Zhongli</td>
+                                <td>78.96.65.65</td>
+                                <td>Childe</td>
+                                <td>Windows</td>
+                                <td>Windows 10</td>
+                                <td>Server Protection</td>
+                                <td>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                    data-bs-toggle="modal"
+                                    data-bs-target=".transaction-detailModal"
+                                  >
+                                    View Details
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function dsf1() {
+          $("#display-2").css({
+            display: "none",
+          });
+          $("#display-1").css({
+            display: "block",
+          });
+        }
+        function dsf2() {
+          $("#display-1").css({
+            display: "none",
+          });
+          $("#display-2").css({
+            display: "block",
+          });
+        }
+        document.getElementById("form-1").addEventListener("click", dsf1);
+        document.getElementById("form-2").addEventListener("click", dsf2);
+      </script>
+    </div>
+  </div></Layout
+>

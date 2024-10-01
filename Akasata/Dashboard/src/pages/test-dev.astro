@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/LayoutTest.astro";
-import Button from "../components/ModalAndButton.astro"
 import ModalButton from "../components/ModalButton.astro"
 import ModalComponents from "../components/ModalComponents.astro"
+
 const ModalForms = [
   { label: "Endpoint NAMA", inputType: "text", placeholder: "Enter Endpoint Hostname", required: true },
   { label: "Endpoint IP", inputType: "text", placeholder: "Enter Endpoint IP", required: true },
@@ -11,9 +11,10 @@ const ModalForms = [
   { label: "Regional", inputType: "text", placeholder: "Enter Regional", required: false },
   { label: "Protection Manager", inputType: "select", placeholder: "", required: true }
 ];
+
 ---
 
 <Layout title="Dashboard Instinct SecOps">
-    <ModalButton buttonText="Add New IP" modalTarget="#newIPModal" />
+    <ModalButton textColor="black" buttonColor="aqua" buttonText="Add New IP" modalTarget="#newIPModal" />
     <ModalComponents modalId="newIPModal" modalTitle="Add New IP" ModalForms={ModalForms}/>
 </Layout>
